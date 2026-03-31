@@ -517,7 +517,7 @@
                 
                 // Fallback para preview caso a imagem real não exista (mesmo do card)
                 imgModal.onerror = function() {
-                    this.src = `https://images.unsplash.com/photo-1555661530-68c8e98db4e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80`;
+                    this.src = `https://criadordeanuncio.com/veiculo/images/logo.png?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80`;
                 };
 
                 imgModal.style.opacity = '1';
@@ -568,11 +568,21 @@
         
         // Array com as avaliações simuladas (Adicione as avaliações reais do seu perfil aqui para garantir o SEO e gatilho)
         const avaliacoesGoogle = [
-            { nome: 'João Pedro', texto: 'Comprei meu veículo aqui, atendimento excelente! Muito transparente.' },
-            { nome: 'Maria Silva', texto: 'Responderam super rápido no WhatsApp. Recomendo demais!' },
-            { nome: 'Carlos Souza', texto: 'Anúncios muito claros e fáceis de ver as fotos. Gostei muito.' },
-            { nome: 'Ana Costa', texto: 'Processo super seguro e direto com o vendedor, 5 estrelas!' },
-            { nome: 'Roberto Alves', texto: 'Encontrei exatamente o que procurava. Sistema muito moderno.' }
+            { nome: 'Mirian Martins', texto: 'Excelente atendimento, obrigado' },
+            { nome: 'Jose Mareide dos Santos', texto: 'Uma ótima experiência para mim e minha família presentei minha filha' },
+            { nome: 'Ruberval Correia', texto: 'Ótimo vendedor 2 carros comprados com ele financiamento aprovado' },
+            { nome: 'Wellington Viana', texto: 'Parabéns Matheus pelo profissional que você e comprei em Londrina Corolla 2010 xei automático sem leilão eu minha família somos grato' },
+            { nome: 'Deivid Gabriel', texto: 'Comprei um Fiesta 2010 completo muito bem conservado, ótimo atendimento do Matheus. Recomendo!' },
+			{ nome: 'Laryssa Silva', texto: 'Excelente atendimento! Com certeza voltaremos!' },
+			{ nome: 'Adrian Gomes', texto: 'Ótimos veículos atendimento de qualidade' },
+			{ nome: 'Rogerio Batista', texto: 'Excelente vendedor' },
+			{ nome: 'Antonio Souza', texto: 'Um ótimo vendedor parabéns você é fera consegui comprar meu carro seminovo em Londrina na zona norte carros usados de qualidade' },
+			{ nome: 'Yasmim Sanz', texto: 'Excelente vendedor, depois de rodar por vários lugares finalmente achei um vendedor Excelente! Podem confiar..' },
+			{ nome: 'Adriana Emidio', texto: 'Rodei londrina toda atrás da minha biz mas encontrei com matheusin na área parabéns pelo atendimento Deus abençoe' },
+			{ nome: 'Alexandree Car', texto: 'Matheusin, obrigado por todo o suporte na compra do nosso Voyage. Você fez a diferença do começo ao fim. Eu e minha família somos gratos por ter escolhido os seminovos Londrina!' },
+			{ nome: 'Pedro Rodrigues', texto: 'Matheusin, você foi essencial pra eu realizar o sonho da minha HR-V 2020. Eu e minha família agradecemos demais pelo atendimento e confiança. Seminovos Londrina é top!' },
+			{ nome: 'Luciana Castro', texto: 'Atendimento muito bom. Super recomendo' },
+			{ nome: 'Valdy Vicente', texto: 'Uma otima experiencia este menino sabe negociar bem obrigado pela compra do meu carro' }
         ];
 
         function mostrarNotificacaoAvaliacao() {
