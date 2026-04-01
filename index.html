@@ -295,7 +295,7 @@
                 quantidade_fotos: 11,
                 data_publicacao: '2026-03-20T08:00:00Z'
             },
-			{
+            {
                 id_pasta: 'classificado05',
                 nome_classificado: 'Hyundai HB20S Vision Flex 12V 2022',
                 descricao: '✅ Motor 1.0 Flex\n✅ Câmbio manual\n✅ Direção elétrica\n✅ Ar-condicionado\n✅ Rodas de liga leve\n✅ Som multimídia\n✅ Espelhamento de celular\n✅ Vidros elétricos\n✅ Volante multifuncional com regulagem de altura e profundidade',
@@ -303,7 +303,7 @@
                 quantidade_fotos: 12,
                 data_publicacao: '2026-03-30T08:00:00Z'
             },
-			{
+            {
                 id_pasta: 'classificado06',
                 nome_classificado: 'Chevrolet S10 Executive 2.4 Flex 2010',
                 descricao: '✅ Direção hidráulica\n✅ Ar-condicionado\n✅ Ar quente\n✅ Câmbio manual\n✅ Vidros elétricos\n✅ Travas elétricas\n✅ Airbag e ABS',
@@ -348,11 +348,14 @@
             return `https://api.whatsapp.com/send?phone=${numero_whatsapp}&text=${encodeURIComponent(mensagem)}`;
         }
 
-        // Função para criar a URL da imagem baseada no padrão exigido
-        function obterUrlImagem(pasta, indice) {
+        // Função atualizada: Agora recebe a data de publicação para quebrar o cache automaticamente
+        function obterUrlImagem(pasta, indice, dataPublicacao) {
             // Formata o número com 2 dígitos (ex: 1 vira '01', 2 vira '02')
             const numeroFormatado = indice.toString().padStart(2, '0');
-            return `${BASE_URL}/${pasta}/image${numeroFormatado}.png`;
+            // Converte a data de publicação num timestamp único
+            const versaoCache = new Date(dataPublicacao).getTime();
+            
+            return `${BASE_URL}/${pasta}/image${numeroFormatado}.png?v=${versaoCache}`;
         }
 
         // Renderiza os anúncios no Grid principal
@@ -361,7 +364,8 @@
             grid.innerHTML = ''; // Limpa antes de renderizar
 
             classificadosOrdenados.forEach((anuncio, index) => {
-                const imagemPrincipalUrl = obterUrlImagem(anuncio.id_pasta, 1);
+                // Passando a data de publicação para a função
+                const imagemPrincipalUrl = obterUrlImagem(anuncio.id_pasta, 1, anuncio.data_publicacao);
                 const linkWhats = gerarLinkWhatsapp(anuncio.numero_whatsapp, anuncio.nome_classificado, anuncio.id_pasta);
                 
                 // Lógica de Visualizações com LocalStorage
@@ -528,7 +532,8 @@
             imgModal.style.opacity = '0';
             
             setTimeout(() => {
-                const url = obterUrlImagem(anuncioAtual.id_pasta, indiceImagemAtual);
+                // Passando a data de publicação também no carrossel
+                const url = obterUrlImagem(anuncioAtual.id_pasta, indiceImagemAtual, anuncioAtual.data_publicacao);
                 imgModal.src = url;
                 
                 // Fallback para preview caso a imagem real não exista (mesmo do card)
@@ -589,16 +594,16 @@
             { nome: 'Ruberval Correia', texto: 'Ótimo vendedor 2 carros comprados com ele financiamento aprovado' },
             { nome: 'Wellington Viana', texto: 'Parabéns Matheus pelo profissional que você e comprei em Londrina Corolla 2010 xei automático sem leilão eu minha família somos grato' },
             { nome: 'Deivid Gabriel', texto: 'Comprei um Fiesta 2010 completo muito bem conservado, ótimo atendimento do Matheus. Recomendo!' },
-			{ nome: 'Laryssa Silva', texto: 'Excelente atendimento! Com certeza voltaremos!' },
-			{ nome: 'Adrian Gomes', texto: 'Ótimos veículos atendimento de qualidade' },
-			{ nome: 'Rogerio Batista', texto: 'Excelente vendedor' },
-			{ nome: 'Antonio Souza', texto: 'Um ótimo vendedor parabéns você é fera consegui comprar meu carro seminovo em Londrina na zona norte carros usados de qualidade' },
-			{ nome: 'Yasmim Sanz', texto: 'Excelente vendedor, depois de rodar por vários lugares finalmente achei um vendedor Excelente! Podem confiar..' },
-			{ nome: 'Adriana Emidio', texto: 'Rodei londrina toda atrás da minha biz mas encontrei com matheusin na área parabéns pelo atendimento Deus abençoe' },
-			{ nome: 'Alexandree Car', texto: 'Matheusin, obrigado por todo o suporte na compra do nosso Voyage. Você fez a diferença do começo ao fim. Eu e minha família somos gratos por ter escolhido os seminovos Londrina!' },
-			{ nome: 'Pedro Rodrigues', texto: 'Matheusin, você foi essencial pra eu realizar o sonho da minha HR-V 2020. Eu e minha família agradecemos demais pelo atendimento e confiança. Seminovos Londrina é top!' },
-			{ nome: 'Luciana Castro', texto: 'Atendimento muito bom. Super recomendo' },
-			{ nome: 'Valdy Vicente', texto: 'Uma otima experiencia este menino sabe negociar bem obrigado pela compra do meu carro' }
+            { nome: 'Laryssa Silva', texto: 'Excelente atendimento! Com certeza voltaremos!' },
+            { nome: 'Adrian Gomes', texto: 'Ótimos veículos atendimento de qualidade' },
+            { nome: 'Rogerio Batista', texto: 'Excelente vendedor' },
+            { nome: 'Antonio Souza', texto: 'Um ótimo vendedor parabéns você é fera consegui comprar meu carro seminovo em Londrina na zona norte carros usados de qualidade' },
+            { nome: 'Yasmim Sanz', texto: 'Excelente vendedor, depois de rodar por vários lugares finalmente achei um vendedor Excelente! Podem confiar..' },
+            { nome: 'Adriana Emidio', texto: 'Rodei londrina toda atrás da minha biz mas encontrei com matheusin na área parabéns pelo atendimento Deus abençoe' },
+            { nome: 'Alexandree Car', texto: 'Matheusin, obrigado por todo o suporte na compra do nosso Voyage. Você fez a diferença do começo ao fim. Eu e minha família somos gratos por ter escolhido os seminovos Londrina!' },
+            { nome: 'Pedro Rodrigues', texto: 'Matheusin, você foi essencial pra eu realizar o sonho da minha HR-V 2020. Eu e minha família agradecemos demais pelo atendimento e confiança. Seminovos Londrina é top!' },
+            { nome: 'Luciana Castro', texto: 'Atendimento muito bom. Super recomendo' },
+            { nome: 'Valdy Vicente', texto: 'Uma otima experiencia este menino sabe negociar bem obrigado pela compra do meu carro' }
         ];
 
         function mostrarNotificacaoAvaliacao() {
