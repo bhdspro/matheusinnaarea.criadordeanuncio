@@ -344,7 +344,7 @@
         // Função para montar o link do WhatsApp
         function gerarLinkWhatsapp(numero_whatsapp, nome_classificado, id_pasta) {
             const linkImagemPrincipal = `${BASE_URL}/${id_pasta}/image01.png`;
-            const mensagem = `Olá, gostaria de mais detalhes do classificado do "${nome_classificado}"!\n\nVeja o anúncio: ${linkImagemPrincipal}`;
+            const mensagem = `Olá, gostaria de mais informações do classificado do "${nome_classificado}"!\n\nVeja o anúncio: ${linkImagemPrincipal}`;
             return `https://api.whatsapp.com/send?phone=${numero_whatsapp}&text=${encodeURIComponent(mensagem)}`;
         }
 
